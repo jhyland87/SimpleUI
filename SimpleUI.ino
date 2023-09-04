@@ -91,12 +91,11 @@ void setup() {
 
   SUI.begin(0x95e7, 0x0000);
 
-  oled.sendCommand(0xA0);
-
-  oled.sendCommand(0xA0);   // 
-  oled.sendCommand(0x72); // RGB Color
-  oled.sendCommand(0xA1); // 0xA1
-  oled.sendCommand(0x0);
+  // Trying to get the OLED to reset properly after Arduino Nano reset
+  //  oled.sendCommand(0xA0); //Set Remap
+  //  oled.sendCommand(0x72); // RGB Color
+  //  oled.sendCommand(0xA1); // StartLine
+  //  oled.sendCommand(0x0);  //
 
   Serial.println("Pausing for 1 sec..");
   delay(1000);
