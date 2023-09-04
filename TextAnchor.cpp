@@ -45,8 +45,7 @@ TextAnchor * TextAnchor::print( char *charValue ) {
 }
 
 TextAnchor::~TextAnchor(void) {
-  std::cout << "Were in ~TextAnchor" << std::endl;
-  free(this);
+  // Add some logic here to delete object from memory to free up some space
 }
 
 TextAnchor * TextAnchor::setAutoPrint( bool autoPrint ){
