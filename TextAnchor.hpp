@@ -8,13 +8,13 @@
 #include <Adafruit_SSD1351.h>
 //#include <Arduino_Helpers.h>
 #include <SPI.h>
-#include <ArduinoSTL.h>
-#include <cstddef>
+//#include <ArduinoSTL.h>
+//#include <cstddef>
 #include "gfxfont.h"
 //#include <Fonts/FreeMonoBoldOblique12pt7b.h>
 //#include <Fonts/FreeSerif9pt7b.h>
 //#include <Fonts/FreeMono9pt7b.h>
-#include <ArxTypeTraits.h>
+//#include <ArxTypeTraits.h>
 
 
 #include "Settings.hpp"
@@ -27,7 +27,7 @@
 
 
 
-
+/*
 template <typename T_ty> struct TypeInfo { static const char * name; };
 template <typename T_ty> const char * TypeInfo<T_ty>::name = "unknown";
 
@@ -38,7 +38,7 @@ template <typename T_ty> const char * TypeInfo<T_ty>::name = "unknown";
 
 // Handy macro to make defining stuff easier.
 #define MAKE_TYPE_INFO(type)  template <> const char * TypeInfo<type>::name = #type;
-
+*/
 
 
 class TextAnchor {
@@ -47,7 +47,7 @@ class TextAnchor {
     TextAnchor(Adafruit_SSD1351 &GFXHandler);
 
     ~TextAnchor(void);
-
+    /*
     template <class T>
       auto print(T val)
       -> typename std::enable_if<std::is_integral<T>::value || std::is_floating_point<T>::value>::type
@@ -75,22 +75,6 @@ class TextAnchor {
         }
         
       }
-    /*
-    template <class T>
-      auto print(T val)
-      -> typename std::enable_if<std::is_floating_point<T>::value>::type
-      {
-        //std::cout << "val[float]: " << val << "; TYPE_NAME(val): "  << TYPE_NAME(val) << std::endl;
-        char * _t = TYPE_NAME(val);
-        std::cout << "is_floating_point val: " << val << "; TYPE_NAME(val): "  << _t << std::endl;
-
-        if ( _t == "double" ){
-          return _printFloat((double) val);
-        }
-        
-        _printFloat(val);
-      }
-      */
 
 
     template <class T>
@@ -137,7 +121,7 @@ class TextAnchor {
         _prependInt((int)val);
       }
 
-
+      */
     
   
     // Set/update the print containers display value to a string, then display it

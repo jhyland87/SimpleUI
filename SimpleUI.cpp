@@ -9,7 +9,7 @@ SimpleUI::SimpleUI(Adafruit_SSD1351 &GFXHandler) : GFXHandler (&GFXHandler) {}
 
 
 TextAnchor * SimpleUI::newAnchor( int x, int y ){
-  std::cout << "Inside  SimpleUI::newAnchor\n\tX: " << x << "\n\tY: " << y << std::endl;
+  //std::cout << "Inside  SimpleUI::newAnchor\n\tX: " << x << "\n\tY: " << y << std::endl;
 
   TextAnchor * _anchor = new TextAnchor( * GFXHandler );
   _anchor->setCursor( x, y );
@@ -36,6 +36,7 @@ void SimpleUI::whatever(char str){
 */
 
 void SimpleUI::begin(){
+   
   GFXHandler->begin();
   GFXHandler->setFont();
   GFXHandler->fillScreen(_defBgColor);
@@ -67,16 +68,16 @@ void SimpleUI::_begin(){
 }
 
 void SimpleUI::setColor( uint16_t fgColor ){
-  std::cout << "Inside: SimpleUI::setColor(fg)" << std::endl;
-  std::cout << "\tfgColor: " << fgColor     << std::endl;
+  //std::cout << "Inside: SimpleUI::setColor(fg)" << std::endl;
+  //std::cout << "\tfgColor: " << fgColor     << std::endl;
   
   _defFgColor = fgColor;
 }
 
 void SimpleUI::setColor( uint16_t fgColor, uint16_t bgColor ){
-  std::cout << "Inside: SimpleUI::setColor(fg, bg)" << std::endl;
-  std::cout << "\tfgColor: " << fgColor     << std::endl;
-  std::cout << "\tbgColor: " << bgColor     << std::endl;
+  //std::cout << "Inside: SimpleUI::setColor(fg, bg)" << std::endl;
+  //std::cout << "\tfgColor: " << fgColor     << std::endl;
+  //std::cout << "\tbgColor: " << bgColor     << std::endl;
 
   _defFgColor = fgColor;
   _defBgColor = bgColor;

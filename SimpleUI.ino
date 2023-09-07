@@ -3,7 +3,7 @@
 #include <Adafruit_SSD1351.h>
 #include <SPI.h>
 //#include "TextAnchor.hpp"
-#include <ArduinoSTL.h>
+//#include <ArduinoSTL.h>
 //#include <cstddef>
 //#include <MemoryUsage.h>
 
@@ -48,11 +48,8 @@ char buffer[8];
 
 SimpleUI SUI(oled);
 
-
-//TextAnchor TimeDisplay, Milliseconds;
-
 // Display stuff
-//TextAnchor * TimeDisplay;
+TextAnchor * TimeDisplay;
 
 TextAnchor * Milliseconds;
 TextAnchor * MillisecondsLabel;
@@ -73,6 +70,7 @@ TextAnchor * DrainDuration; // How long should the drain stay open for?
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("In setup()");
 
   delay(1000);
 
@@ -88,41 +86,58 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ENCODER_CLK), updateEncoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_DT), updateEncoder, CHANGE);
 
-
+ 
   SUI.begin(0x95e7, 0x0000);
 
-  // Trying to get the OLED to reset properly after Arduino Nano reset
-  //  oled.sendCommand(0xA0); //Set Remap
-  //  oled.sendCommand(0x72); // RGB Color
-  //  oled.sendCommand(0xA1); // StartLine
-  //  oled.sendCommand(0x0);  //
+  
+  //oled.sendCommand(0xA0);
+  //oled.sendCommand(0xA0);   // 
+  //oled.sendCommand(0x72); // RGB Color
+  //oled.sendCommand(0xA1); // 0xA1
+  //oled.sendCommand(0x0);
+  
 
   Serial.println("Pausing for 1 sec..");
   delay(1000);
-  oled.fillScreen(BLACK);
+  //oled.fillScreen(BLACK);
+  oled.fillRect(0, 0, 128, 128, BLACK); 
+  delay(500);
 
 
-  //TimeDisplay   = SUI.newAnchor(120, 0)->rightAlign(true)->setColor(0xc7a9)->print("<TimeDisplay>");
+  TimeDisplay   = SUI
+    .newAnchor(20, 0)
+    //.newAnchor(120, 0)->rightAlign(true) // Right align
+    //->setColor(0xc7a9)
+    ->print("<TimeDisplay>");
   //PumpDurtion   = SUI.newAnchor(0, 10)->setColor(LIGHTSTEELBLUE)->print("<PumpDurtion>");
   //PumpDrain     = SUI.newAnchor(0, 20)->setColor(LIGHTSTEELBLUE)->print("<PumpDrain>");
   //DrainDuration = SUI.newAnchor(0, 30)->setColor(LIGHTSTEELBLUE)->print("<DrainDuration>");
 
-
-  MillisecondsLabel   = SUI.newAnchor(65, 15)->rightAlign(true)->setColor(DIMGRAY)->print("MS:");
+ 
+  MillisecondsLabel   = SUI.newAnchor(0, 15)
+    //.newAnchor(65, 15)->rightAlign(true)
+    ->setColor(DIMGRAY)->print("MS:");
   Milliseconds        = SUI.newAnchor(67, 15)->setColor(0xF800)->print("<ms>");
 
-  MinutesLabel        = SUI.newAnchor(65, 25)->rightAlign(true)->setColor(DIMGRAY)->print("Min:");
+  MinutesLabel        = SUI.newAnchor(0, 25)
+    //.newAnchor(65, 25)->rightAlign(true)
+    ->setColor(DIMGRAY)->print("Min:");
   Minutes             = SUI.newAnchor(67, 25)->setColor(0x3666)->print("<min>");
 
-  IterationsLabel     = SUI.newAnchor(65, 35)->rightAlign(true)->setColor(DIMGRAY)->print("Iterations:");
+  IterationsLabel     = SUI.newAnchor(0, 35)
+    //.newAnchor(65, 35)->rightAlign(true)
+    ->setColor(DIMGRAY)->print("Iterations:");
   Iterations          = SUI.newAnchor(67, 35)->setColor(0x4416)->print("<iter>");
 
-  EncoderPosLabel     = SUI.newAnchor(65, 45)->rightAlign(true)->setColor(DIMGRAY)->setHighlightColor(MEDIUMSLATEBLUE)->print("Encoder:");
+  EncoderPosLabel     = SUI.newAnchor(0, 45)
+    //.newAnchor(65, 45)->rightAlign(true)
+    ->setColor(DIMGRAY)->setHighlightColor(MEDIUMSLATEBLUE)->print("Encoder:");
   EncoderPos          = SUI.newAnchor(67, 45)->setColor(DARKORANGE)
     //->setHighlightColor(ORANGERED)
     ->print("<enco>");
 
   delay(300);
+  
 }
 
 
@@ -130,11 +145,10 @@ void loop(){
   iter++;
   //std::cout << "lastChangeMs: " << TimeDisplay->lastChangeMs() << "; millis - lastChangeMs: " << (millis() - TimeDisplay->lastChangeMs()) << std::endl;
 
-  /*
+  
   if ( millis() - TimeDisplay->lastChangeMs() > 1000 ){
     setUptime();
   }
-  */
   
   if ( millis() - Milliseconds->lastChangeMs() > 500 ){
     Milliseconds->print(millis());
@@ -166,7 +180,7 @@ void loop(){
 
       // only toggle the LED if the new button state is HIGH
       if (buttonState == LOW) {
-        std::cout << "Button clicked - Encoder: " << encoderPos << std::endl; 
+        //std::cout << "Button clicked - Encoder: " << encoderPos << std::endl; 
         EncoderPos->highlight();
       }
     }
@@ -180,7 +194,7 @@ void loop(){
 }
 
 void setUptime() {
-  return;
+
     unsigned long upSeconds = millis() / 1000;
     unsigned long days = upSeconds / 86400;
     upSeconds = upSeconds % 86400;
@@ -206,11 +220,13 @@ void setUptime() {
         strcpy( oldTimeString, newTimeString );
   
 
-    //TimeDisplay->print(newTimeString);
+    TimeDisplay->print(newTimeString);
     //return newTimeString;
+    
 }
 
 void updateEncoder(){
+
 
   // Read the current state of CLK
   currentStateCLK = digitalRead(ENCODER_CLK);
@@ -238,7 +254,7 @@ void updateEncoder(){
 
       clkClockwise = true;
     }
-     std::cout << "EncoderPos: " << encoderPos << std::endl; 
+     //std::cout << "EncoderPos: " << encoderPos << std::endl; 
 
      EncoderPos->print(encoderPos);
   }

@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef COLOR_CODES_H
+#define COLOR_CODES_H
+
 // Black & Grays
 const uint16_t BLACK                     = 0x0000;
 const uint16_t GRAY                      = 0x8410;
@@ -160,3 +165,5 @@ const uint16_t THISTLE                   = 0xDDFB;
 const uint16_t TURQUOISE                 = 0x471A;
 const uint16_t VIOLET                    = 0xEC1D;
 const uint16_t WHEAT                     = 0xF6F6;
+
+#endif //

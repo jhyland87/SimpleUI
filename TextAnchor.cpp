@@ -3,7 +3,7 @@
 #include "TextAnchor.hpp"
 
 
-
+/*
 MAKE_TYPE_INFO( int )
 MAKE_TYPE_INFO( int* )
 MAKE_TYPE_INFO( float )
@@ -21,7 +21,7 @@ MAKE_TYPE_INFO( char& )
 //MAKE_TYPE_INFO( String )
 //MAKE_TYPE_INFO( char[5] )
 //MAKE_TYPE_INFO( char(*)[5] )
-
+*/
 
 
 /*
@@ -45,7 +45,7 @@ TextAnchor * TextAnchor::print( char *charValue ) {
 }
 
 TextAnchor::~TextAnchor(void) {
-  // Add some logic here to delete object from memory to free up some space
+
 }
 
 TextAnchor * TextAnchor::setAutoPrint( bool autoPrint ){
@@ -355,7 +355,7 @@ TextAnchor * TextAnchor::setHighlightColor( uint16_t fgHlColor, uint16_t bgHlCol
 TextAnchor * TextAnchor::highlight( void ){
   _highlightStatus = !_highlightStatus;
 
-  std::cout << "In highlight - highlight:" << _highlightStatus << std::endl;
+  //std::cout << "In highlight - highlight:" << _highlightStatus << std::endl;
 
   
   /*
@@ -456,7 +456,7 @@ void TextAnchor::_printLong( const long intValue ){
 }
 
 void TextAnchor::_printULong( const unsigned long intValue ){
-  std::cout << "The value " << intValue << " is a UNSIGNED LONG int" << std::endl;
+  //std::cout << "The value " << intValue << " is a UNSIGNED LONG int" << std::endl;
 
   char cstr[MAX_CHAR_LENGTH];
   
@@ -476,7 +476,7 @@ void TextAnchor::_printFloat( const float intValue ){
 }
 
 void TextAnchor::_printDouble( const double intValue ){
-  std::cout << "The value " << intValue << " is a DOUBLE int" <<  std::endl;
+  //std::cout << "The value " << intValue << " is a DOUBLE int" <<  std::endl;
 
   char cstr[MAX_CHAR_LENGTH];
 
