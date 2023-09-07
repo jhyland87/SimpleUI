@@ -123,6 +123,12 @@ class TextAnchor {
 
       */
     
+    TextAnchor * print(int intValue);
+    TextAnchor * print(unsigned int intValue);
+    TextAnchor * print(long intValue);
+    TextAnchor * print(unsigned long intValue);
+    //TextAnchor * print(float intValue);
+    //TextAnchor * print(unsigned float intValue);
   
     // Set/update the print containers display value to a string, then display it
     TextAnchor * print(char *charValue);

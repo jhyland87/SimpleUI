@@ -44,6 +44,37 @@ TextAnchor * TextAnchor::print( char *charValue ) {
   return this;
 }
 
+TextAnchor * TextAnchor::print(int intValue){
+  _printInt(intValue);
+  return this;
+}
+
+TextAnchor * TextAnchor::print(unsigned int intValue){
+  _printInt(intValue);
+  return this;
+}
+
+TextAnchor * TextAnchor::print(long intValue){
+  _printLong(intValue);
+  return this;
+}
+
+TextAnchor * TextAnchor::print(unsigned long intValue){
+  _printLong(intValue);
+  return this;
+}
+
+TextAnchor * TextAnchor::print(float intValue){
+  _printFloat(intValue);
+  return this;
+}
+
+TextAnchor * TextAnchor::print(unsigned float intValue){
+  _printFloat(intValue);
+  return this;
+}
+
+
 TextAnchor::~TextAnchor(void) {
 
 }

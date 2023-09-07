@@ -2,7 +2,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1351.h>
 #include <SPI.h>
-//#include "TextAnchor.hpp"
+#include "TextAnchor.hpp"
 //#include <ArduinoSTL.h>
 //#include <cstddef>
 //#include <MemoryUsage.h>
